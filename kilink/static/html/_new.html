@@ -1,0 +1,90 @@
+<!-- <script src="/static/lib/codemirror.js"></script> -->
+<div class="row">
+  <div class="span10">
+    <form ng-submit="submit()" id="pasteform" name="pasteform">
+      <textarea ng-model="content" id="code" name="content" rows="8" cols="40"></textarea>
+      <div class='buttons' style="text-align:right">
+        Select a text type:&nbsp;
+        <select onchange="selectMode()" id="seleclang" class="btn btn-success" ng-model="text_type" name="text_type">
+          <option value="auto" selected>auto</option>
+          <option value="c">C</option>
+          <option value="c++">C++</option>
+          <option value="c#">C#</option>
+          <option value="clojure">Clojure</option>
+          <option value="coffeescript">Coffeescript</option>
+          <option value="css">Css</option>
+          <option value="d">D</option>
+          <option value="diff">Diff</option>
+          <option value="erlang">Erlang</option>
+          <option value="go">Go</option>
+          <option value="haskell">Haskell</option>
+          <option value="html">Html</option>
+          <option value="htmlmixed">Htmlmixed</option>
+          <option value="http">Http</option>
+          <option value="java">Java</option>
+          <option value="javascript">Javascript</option>
+          <option value="json">Json</option>
+          <option value="lua">Lua</option>
+          <option value="markdown">Markdown</option>
+          <option value="php">Php</option>
+          <option value="perl">Perl</option>
+          <option value="plain text">Plain text</option>
+          <option value="python">Python</option>
+          <option value="r">R</option>
+          <option value="ruby">Ruby</option>
+          <option value="rust">Rust</option>
+          <option value="scala">Scala</option>
+          <option value="shell">Shell</option>
+          <option value="smalltalk">Smalltalk</option>
+          <option value="sql">Sql</option>
+          <option value="stex">Stex</option>
+          <option value="tex">Tex</option>
+          <option value="vbscript">Vbscript</option>
+          <option value="xml">Xml</option>
+        </select>
+        &nbsp; &nbsp;
+        <button type="submit" value="{{button_text}}" class="btn btn-success" ng-disabled="pasteform.$invalid">{{button_text}}</button>
+        <button id="text_type" value="{{text_type}}" style="display:none">{{text_type}}</button>
+      </div>
+    </form>
+      <input ng-model="linkode_id" value="{{linkode_id}}"></input>
+      <input ng-model="revno" value="{{revno}}"></input>
+      <input ng-model="content" value="{{content}}"></input>
+      <input ng-model="text_type" value="{{text_type}}"></input>
+      <input ng-model="tree_info" value="{{tree_info}}"></input>
+  </div>
+  <div class="span2">
+  </div>
+</div>
+
+<script src="/static/lib/d3.min.js"></script>
+<!-- <script src="/static/mode/clike/clike.js"></script>
+<script src="/static/mode/clojure/clojure.js"></script>
+<script src="/static/mode/coffeescript/coffeescript.js"></script>
+<script src="/static/mode/css/css.js"></script>
+<script src="/static/mode/d/d.js"></script>
+<script src="/static/mode/diff/diff.js"></script>
+<script src="/static/mode/erlang/erlang.js"></script>
+<script src="/static/mode/go/go.js"></script>
+<script src="/static/mode/haskell/haskell.js"></script>
+<script src="/static/mode/htmlmixed/htmlmixed.js"></script>
+<script src="/static/mode/http/http.js"></script>
+<script src="/static/mode/javascript/javascript.js"></script>
+<script src="/static/mode/lua/lua.js"></script>
+<script src="/static/mode/markdown/markdown.js"></script>
+<script src="/static/mode/php/php.js"></script>
+<script src="/static/mode/perl/perl.js"></script>
+<script src="/static/mode/python/python.js"></script>
+<script src="/static/mode/r/r.js"></script>
+<script src="/static/mode/ruby/ruby.js"></script>
+<script src="/static/mode/rust/rust.js"></script>
+<script src="/static/mode/shell/shell.js"></script>
+<script src="/static/mode/smalltalk/smalltalk.js"></script>
+<script src="/static/mode/sql/sql.js"></script>
+<script src="/static/mode/stex/stex.js"></script>
+<script src="/static/mode/vbscript/vbscript.js"></script>
+<script src="/static/mode/xml/xml.js"></script>
+<script src="/static/js/highlight.js/highlight.pack.js"></script>
+<script src="/static/editor.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/draw_tree.js"></script> -->

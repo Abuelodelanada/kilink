@@ -155,6 +155,7 @@ def build_tree(tree, parent, nodes):
 @crossdomain(origin='*')
 def api_create():
     """Create a kilink."""
+    #import ipdb; ipdb.set_trace()
     content = request.form['content']
     text_type = request.form.get('text_type', "")
     klnk = kilinkbackend.create_kilink(content, text_type)
@@ -197,6 +198,52 @@ def api_get(kid, revno):
 
     ret_json = jsonify(content=klnk.content, text_type=klnk.text_type)
     return ret_json
+
+
+@app.route('/api/1/linkodes/<kid>/<revno>/tree', methods=['GET'])
+@crossdomain(origin='*')
+def api_get_tree(kid, revno=None):
+    """Get the linkode tree"""
+    # get the content
+    if revno is None:
+        klnk = kilinkbackend.get_root_node(kid)
+        revno = klnk.revno
+    else:
+        klnk = kilinkbackend.get_kilink(kid, revno)
+    content = klnk.content
+    text_type = klnk.text_type
+
+    # node list
+    node_list = []
+    for treenode in kilinkbackend.get_kilink_tree(kid):
+        url = "/l/%s/%s" % (kid, treenode.revno)
+        parent = treenode.parent
+        node_list.append({
+            'order': treenode.order,
+            'parent': parent,
+            'revno': treenode.revno,
+            'url': url,
+            'timestamp': str(treenode.timestamp),
+            'selected': treenode.revno == revno,
+        })
+
+    tree = {}
+    build_tree(tree, {}, node_list)
+
+    render_dict = {
+        'value': content,
+        'button_text': 'Save new version',
+        'kid_info': "l/%s/%s" % (kid, revno),
+        'tree_info': json.dumps(tree) if tree != {} else False,
+        'current_revno': revno,
+        'text_type': text_type,
+    }
+
+    ret_json = jsonify(render_dict)
+    response = make_response(ret_json)
+    #response.headers['Location'] = 'http://%s/%s/%s' % (
+    #    config["server_host"], klnk.kid, klnk.revno)
+    return response, 200
 
 
 if __name__ == "__main__":

@@ -87,7 +87,7 @@ $(document).ready(function(){
                 };
         });
     }
-    if (node_list !== false) {
-        create_tree();
-    }
+    //if (node_list !== false) {
+    //    create_tree();
+    //}
 })
