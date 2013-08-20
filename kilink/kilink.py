@@ -253,4 +253,4 @@ if __name__ == "__main__":
     # set up the backend
     engine = create_engine(config["db_engine"])
     kilinkbackend = backend.KilinkBackend(engine)
-    app.run(debug=True, host='linkode.herokuapp.com')
+    app.run()
