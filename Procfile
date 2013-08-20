@@ -1,1 +1,1 @@
-web: gunicorn kilink:app
+web: sh run
